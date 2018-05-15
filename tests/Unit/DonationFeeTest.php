@@ -51,4 +51,17 @@ class DonationFeeTest extends TestCase
         $this->expectException(\Exception::class);
         $donationFees = new DonationFee(0.1, 20);
     }
+
+    public function testFixedAndCommissionFeeAmount()
+    {
+        // Etant donné une donation de 100 et commission de 10%
+        $donationFees = new DonationFee(100, 10);
+
+        // Lorsque qu'on appel la méthode getCommissionAmount()
+        $actual = $donationFees->getFixedAndCommissionFeeAmount();
+
+        // Alors la Valeur de la commission doit être de 10
+        $expected = 60;
+        $this->assertEquals($expected, $actual);
+    }
 }
