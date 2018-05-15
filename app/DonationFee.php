@@ -24,6 +24,10 @@ class DonationFee
             throw new \Exception('Le pourcentage de commission doit être compris entre 0 et 30%');
         }
 
+        if(!is_int($donation)|| $donation < 100){
+            throw new \Exception('La donation doit être un entier positif supérieur ou égal à 100');
+        }
+
         $this->donation = $donation;
         $this->commissionPercentage = $commissionPercentage;
 
