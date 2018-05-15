@@ -19,6 +19,11 @@ class DonationFee
 
     public function __construct($donation, $commissionPercentage)
     {
+
+        if ($commissionPercentage > 30){
+            throw new \Exception('Le pourcentage de commission doit être compris entre 0 et 30%');
+        }
+
         $this->donation = $donation;
         $this->commissionPercentage = $commissionPercentage;
 
@@ -36,6 +41,8 @@ class DonationFee
         $amountCollected = $this->donation -  ($this->donation * $this->commissionPercentage/100);
         return $amountCollected;
     }
+
+
 
 
 }
