@@ -29,6 +29,9 @@ class DonationFee
         if(!is_int($donation)|| $donation < 100){
             throw new \Exception('La donation doit être un entier positif supérieur ou égal à 100');
         }
+        if($this->getFixedAndCommissionFeeAmount() > 500){
+            throw new \Exception('Le total des frais fixes ne doit pas dépasser 5E');
+        }
 
         $this->donation = $donation;
         $this->commissionPercentage = $commissionPercentage;
