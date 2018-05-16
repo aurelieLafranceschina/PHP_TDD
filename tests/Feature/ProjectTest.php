@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
+
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class ProjectTest extends TestCase
 {
@@ -26,4 +28,13 @@ class ProjectTest extends TestCase
 
         $response->assertSee('<h1>Dons en ligne</h1>');
     }
+
+    public function testDatabase()
+    {
+        // Create a single App\User instance...
+        $user = factory(App\User::class)->create();
+
+    }
+
+
 }
