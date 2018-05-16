@@ -79,15 +79,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <h1>Liste des projets</h1>
+                    <h1>Dons en ligne</h1>
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
+                    <a href="{{ url('/projects') }}">Projets</a>
                     <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+
                 </div>
             </div>
         </div>

@@ -24,6 +24,6 @@ class ProjectTest extends TestCase
     {
         $response = $this->get('http://127.0.0.1:8000/');
 
-        $response->assertSee('<h1>Liste des projets</h1>');
+        $response->assertSee('<h1>Dons en ligne</h1>');
     }
 }
