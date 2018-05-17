@@ -13,13 +13,15 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        //$projects = DB::table('projects')->get();
+        //$project = factory(\App\Project::class)->create();
         $projects = Project::all();
         $data = [
             "projects" => $projects,
         ];
 
         return view('project', $data);
+
+
     }
 
 

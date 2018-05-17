@@ -8,6 +8,9 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 
+use Faker\Generator as Faker;
+
+
 
 class ProjectTest extends TestCase
 {
@@ -16,29 +19,38 @@ class ProjectTest extends TestCase
      *
      * @return void
      */
+    use RefreshDatabase;
+
     public function testStatus200()
     {
-        $response = $this->get('http://127.0.0.1:8000/project');
+        $response = $this->get('/project');
 
         $response->assertStatus(200);
     }
 
     public function testH1()
     {
-        $response = $this->get('http://127.0.0.1:8000/project');
+        $response = $this->get('/project');
 
         $response->assertSee('<h1>Liste de projets</h1>');
     }
 
     public function testProjectName()
     {
-        $response = $this->get('http://127.0.0.1:8000/project');
-        $projectName = DB::select('select * FROM projects');
 
-        $response->assertSee($projectName);
+
+        $project = factory(\App\Project::class)->create();
+        //dd ($exampleProject);
+
+        $response = $this->get('/project');
+        $response->assertSee($project->project_name);
     }
 
 
-
-
 }
+
+
+
+
+
+
