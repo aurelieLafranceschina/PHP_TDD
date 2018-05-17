@@ -20,3 +20,4 @@ Route::get('/', function () {
 });*/
 
 Route::get('/project', 'ProjectController@index');
+Route::get('/projectDetails', 'ProjectDetailsController@index');

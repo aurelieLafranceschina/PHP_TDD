@@ -85,7 +85,10 @@
         </div>
         <div class="projectList">
             @foreach ($projects as $project)
-                <li class="list-group-item list">{{$project->project_name}}</li>
+                <li class="list-group-item list">{{$project->project_name}}
+                    <button><a href="/projectDetails/{{$project->id}}">Détail du projet</a></button>
+                </li>
+
             @endforeach
         </div>
 

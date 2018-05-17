@@ -84,7 +84,7 @@
 
                 <div class="links">
                     <a href="{{ url('/project') }}">Projets</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="{{ url('/projectDetails') }}">Détails</a>
 
                 </div>
             </div>

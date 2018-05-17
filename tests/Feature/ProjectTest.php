@@ -37,12 +37,19 @@ class ProjectTest extends TestCase
 
     public function testProjectName()
     {
-
-
         $project = factory(\App\Project::class)->create();
         //dd ($exampleProject);
 
         $response = $this->get('/project');
+        $response->assertSee($project->project_name);
+    }
+
+    public function testProjectDetails()
+    {
+        $project = factory(\App\Project::class)->create();
+        //dd ($exampleProject);
+
+        $response = $this->get('/projectDetails');
         $response->assertSee($project->project_name);
     }
 
