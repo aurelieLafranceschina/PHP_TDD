@@ -81,7 +81,7 @@
 
     <div class="content">
         <div class="title m-b-md">
-            <h1>Projets</h1>
+            <h1>Liste de projets</h1>
         </div>
         <div class="projectList">
             <p>Projet n°1</p>

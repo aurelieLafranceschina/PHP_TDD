@@ -17,16 +17,16 @@ class ProjectTest extends TestCase
      */
     public function testStatus200()
     {
-        $response = $this->get('http://127.0.0.1:8000/');
+        $response = $this->get('http://127.0.0.1:8000/project');
 
         $response->assertStatus(200);
     }
 
     public function testH1()
     {
-        $response = $this->get('http://127.0.0.1:8000/');
+        $response = $this->get('http://127.0.0.1:8000/project');
 
-        $response->assertSee('<h1>Dons en ligne</h1>');
+        $response->assertSee('<h1>Liste de projets</h1>');
     }
 
     public function testDatabase()
