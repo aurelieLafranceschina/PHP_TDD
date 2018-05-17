@@ -84,8 +84,9 @@
             <h1>Liste de projets</h1>
         </div>
         <div class="projectList">
-            <p>Projet n°1</p>
-            <p>Projet n°2</p>
+            @foreach ($projects as $project)
+                <li class="list-group-item list">{{$project->project_name}}</li>
+            @endforeach
         </div>
 
         <div class="links">
