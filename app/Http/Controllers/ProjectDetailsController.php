@@ -29,5 +29,12 @@ class ProjectDetailsController extends Controller
 
     }
 
+    public function getDetails($id){
+
+        $details = Project::find($id);
+
+        return view ('projectDetails', ["project"=>$details]);
+    }
+
 
 }

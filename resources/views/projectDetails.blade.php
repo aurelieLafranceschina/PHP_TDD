@@ -87,7 +87,7 @@ html, body {
       <h2> {{$projects->project_name}}</h2>
         <h3>Depuis le {{$projects->project_creation_date}}</h3>
             <h4>{{$projects->project_description}}</h4>
-        <h5>{{$projects->user_id}}</h5>
+        <h5>{{$projects->user->first_name}}</h5>
     </div>
 
     <div class="links">

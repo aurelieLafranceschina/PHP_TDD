@@ -60,6 +60,14 @@ class ProjectTest extends TestCase
         $this->assertInstanceOf('App\User' , $project->user);
     }
 
+    public function testUserName()
+    {
+        $project = factory(\App\Project::class)->create();
+
+
+        $response = $this->get('/projectDetails/1');
+        $response->assertSee($project->user->first_name);
+    }
 
 }
 
