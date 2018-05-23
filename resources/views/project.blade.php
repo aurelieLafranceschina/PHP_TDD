@@ -93,9 +93,7 @@
         </div>
 
         <div class="links">
-            <a href="https://laravel.com/docs">Projets</a>
-            <a href="https://laracasts.com">Laracasts</a>
-
+            <a href="{{ url('/') }}">Accueil</a>
         </div>
     </div>
 </div>

@@ -16,15 +16,15 @@ use Illuminate\Http\Request;
 
 class ProjectDetailsController extends Controller
 {
-    public function index()
+    public function edit($id)
     {
         //$project = factory(\App\Project::class)->create();
-        $projects = Project::all();
+        $projects = Project::find($id);
         $data = [
             "projects" => $projects,
         ];
 
-        return view('project', $data);
+        return view('projectDetails', $data);
 
 
     }

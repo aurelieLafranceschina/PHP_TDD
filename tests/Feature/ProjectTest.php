@@ -49,8 +49,15 @@ class ProjectTest extends TestCase
         $project = factory(\App\Project::class)->create();
         //dd ($project);
 
-        $response = $this->get('/projectDetails');
+        $response = $this->get('/projectDetails/1');
         $response->assertSee($project->project_name);
+    }
+
+    public function testRelationUserProject()
+    {
+        $project = factory(\App\Project::class)->create();
+
+        $this->assertInstanceOf('App\User' , $project->user);
     }
 
 

@@ -18,7 +18,8 @@ class CreateProjectsTable extends Migration
             $table->string('project_name');
             $table->text('project_description');
             $table->date('project_creation_date');
-            $table->string('author_name');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

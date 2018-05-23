@@ -1,4 +1,3 @@
-<?php
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -82,20 +81,19 @@ html, body {
 
 <div class="content">
     <div class="title m-b-md">
-        <h1>Détail de projets</h1>
+        <h1>Don en ligne</h1>
     </div>
     <div class="projectList">
-        @foreach ($projects as $project)
-            <li class="list-group-item list">{{$project->project_name}}</li>
-            <li class="list-group-item list">{{$project->project_description}}</li>
-            <li class="list-group-item list">{{$project->project_creation_date}}</li>
-            <li class="list-group-item list">{{$project->author_name}}</li>
-        @endforeach
+      <h2> {{$projects->project_name}}</h2>
+        <h3>Depuis le {{$projects->project_creation_date}}</h3>
+            <h4>{{$projects->project_description}}</h4>
+        <h5>{{$projects->user_id}}</h5>
     </div>
 
     <div class="links">
-        <a href="https://laravel.com/docs">Projets</a>
-        <a href="https://laracasts.com">Laracasts</a>
+        <a href="{{ url('/') }}">Accueil</a>
+        <a href="{{ url('/project') }}">Projets</a>
+
 
     </div>
 </div>
