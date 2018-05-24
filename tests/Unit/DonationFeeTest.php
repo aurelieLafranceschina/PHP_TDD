@@ -32,7 +32,7 @@ class DonationFeeTest extends TestCase
         // Etant donné une donation de 100 et commission de 10%
         $donationFees = new DonationFee(100, 10);
 
-        // Lorsque qu'on appel la méthode getCommissionAmount()
+        // Lorsque qu'on appel la méthode getAmountCollected()
         $actual = $donationFees->getAmountCollected();
 
         // Alors la Valeur de la commission doit être de 10
@@ -67,8 +67,27 @@ class DonationFeeTest extends TestCase
 
     public function testTotalFeesException()
     {
-        $this->expectException(\Exception::class);
-        $donationFees = new DonationFee(100, 100);
+        // Etant donné une donation de 100€ (10000) et une commission de 25%
+        $donationFees = new DonationFee(10000, 25);
+
+        $actual = $donationFees->getCommissionAmount();
+        $expected = 500 - 50; // 500 (montant max) - les frais fix et pas 2500 !!;
+        $this->assertEquals($expected, $actual);
+
+
+
+        // Lorsque qu'on appel la méthode getFixedAndCommissionFeeAmount()
+        $actual = $donationFees->getFixedAndCommissionFeeAmount();
+
+        // Alors la valeurs de frais (Fix + Com) ne doit passer 5€ (500)
+        $expected = 500;
+        $this->assertEquals($expected, $actual);
+
+
+        $actual = $donationFees->getAmountCollected();
+        $expected = 10000 - 500;
+        $this->assertEquals($expected, $actual);
+
 
     }
 

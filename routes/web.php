@@ -19,5 +19,10 @@ Route::get('/', function () {
     return view('project');
 });*/
 
-Route::get('/project', 'ProjectController@index');
+Route::get('/project', 'ProjectController@index')->name('allProjects');
 Route::get('/projectDetails/{id}', 'ProjectDetailsController@edit');
+Route::post('/project', 'ProjectController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

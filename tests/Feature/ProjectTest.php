@@ -49,7 +49,7 @@ class ProjectTest extends TestCase
         $project = factory(\App\Project::class)->create();
         //dd ($project);
 
-        $response = $this->get('/projectDetails/1');
+        $response = $this->get('/projectDetails/'.$project->id);
         $response->assertSee($project->project_name);
     }
 
@@ -65,8 +65,31 @@ class ProjectTest extends TestCase
         $project = factory(\App\Project::class)->create();
 
 
-        $response = $this->get('/projectDetails/1');
+        $response = $this->get('/projectDetails/'.$project->id);
         $response->assertSee($project->user->first_name);
+    }
+
+    public function testAuthentication()
+    {
+        // Creer un User avec une factory
+        $user = factory(\App\User::class)->create();
+
+        // Make un Project avec une factory
+        $project = factory(\App\Project::class)->make();
+
+        // Acting As a User, POST the Project to the Create Project URL
+        $response = $this->actingAs($user)->post('/project', [
+            "newProject" => $project->project_name,
+            "newDescription"=>$project->project_description,
+            "newAuthorName"=>$project->user_id,
+
+        ]);
+        
+        $response2 = $this->get('/project');
+
+        // Check that in my projects list I can see the project name
+        $response2->assertSee($project->project_name);
+
     }
 
 }
