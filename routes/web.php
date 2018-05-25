@@ -20,8 +20,12 @@ Route::get('/', function () {
 });*/
 
 Route::get('/project', 'ProjectController@index')->name('allProjects');
-Route::get('/projectDetails/{id}', 'ProjectDetailsController@edit');
 Route::post('/project', 'ProjectController@store');
+
+
+Route::get('/projectDetails/{id}', 'ProjectDetailsController@edit');
+Route::post('/projectDetails/{id}', 'ProjectDetailsController@store')->name('projectDetails');
+
 
 Auth::routes();
 

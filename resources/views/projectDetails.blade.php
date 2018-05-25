@@ -92,6 +92,31 @@ html, body {
         <h5>{{$projects->user->first_name}}</h5>
     </div>
 
+
+
+    <div class="form50">
+        @if($projects->user->id == Auth::id())
+            <h2> Modifier votre projet </h2>
+
+            <form action="/projectDetails/{{$projects->id}}" method="POST">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="newProject"><h2>Nom du projet</h2></label>
+                    <input type="text" class="form-control" name="newProject">
+                </div>
+                <div class="form-group">
+                    <label for="newDescription"><h2>Description du projet</h2></label>
+                    <input type="text"  title="description" class="form-control" name="newDescription">
+                </div>
+                <div class="form-group">
+                    <label for="newAuthorName"><h2>Auteur du projet</h2></label>
+                    <input type="text"  class="form-control" name="newAuthorName">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        @endif
+    </div>
+
     <div class="links">
         <a href="{{ url('/') }}">Accueil</a>
         <a href="{{ url('/project') }}">Projets</a>

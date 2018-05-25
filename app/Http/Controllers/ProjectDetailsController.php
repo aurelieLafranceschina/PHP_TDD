@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -36,5 +37,25 @@ class ProjectDetailsController extends Controller
         return view ('projectDetails', ["project"=>$details]);
     }
 
+    public function store(Request $request , $id)
+    {
+        $project = Project::find($id);
+
+        if($project->user->id == Auth::id()){
+
+            $project->project_name = $request->newProject;
+            $project->project_description = $request->newDescription;
+            $project->save();
+
+
+            return redirect(route('projectDetails', ['id' => $id]));
+
+        }
+        else {
+            return abort('404');
+        }
+
+
+    }
 
 }
